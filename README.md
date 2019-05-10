@@ -1,77 +1,60 @@
-# React canvas sketch
+[![./docs/](./docs/Virdhi_Logo.svg)](http://www.virdhitechlab.in)
 
-[![](http://www.virdhitechlab.in/Images/Virdhi_Logo.svg)](http://www.virdhitechlab.in)
+# [React canvas sketch](https://www.npmjs.com/package/@vhitech/canvas-sketch)
 
-## [OPEN DEMO](https://fir-view-e11aa.firebaseapp.com/)
+The project provides a react library, that helps build a free hand drawing board on top of HTML5 Canvas. 
 
-## installation
+![Sample Screen shot](./docs/demo-screenshot.png) 
+
+Check out are **[Demo App](https://fir-view-e11aa.firebaseapp.com/)**
+
+
+## Installation
+
+For Yarn users
+
+`yarn @vhitech/canvas-sketch`
+
+For npm users
 
 `npm i @vhitech/canvas-sketch`
 
-## Implementation
+
+## Usage
+
+You can Import the library as shown below
 
 ```
-import React, { Component } from "react";
-import styles from "./style/App.module.scss";
 import Sketch, { TOOL } from "@vhitech/canvas-sketch";
+``` 
 
-class App extends Component {
-  state = {
-    drawInput: [],
-    tool: TOOL.PENCIL,
-    color: "#234494"
-  };
+Maintain state variable to track the coordinates of the drawing
 
-  updateToolInfo = data => {
-    this.setState({ drawInput: data });
-  };
-
-  render() {
-    const { color, tool, drawInput } = this.state;
-    return (
-      <div className={styles.container}>
-        <div className={styles.toolsPanel}>
-          <div className='col-12'>
-            <div className='mt1 col-12 align-center'>
-              <div>Color</div>
-              <input
-                type='color'
-                className='mx-auto color-picker'
-                name='colorPicker'
-                title='Color Picker'
-                value={color}
-                onChange={e => this.setState({ color: e.target.value })}
-              />
-            </div>
-
-            <div className='mt1 col-12 align-center'>
-              <div>Clear</div>
-              <button onClick={() => this.sketch.eraseAll()}>Erase</button>
-            </div>
-
-            <div className='mt1 col-12 align-center'>
-              <div>UN DO</div>
-              <button onClick={() => this.sketch.unDo()}>{`<-`}</button>
-            </div>
-            <div className='mt1 col-12 align-center'>
-              <div>RE DO</div>
-              <button onClick={() => this.sketch.reDo()}>{`->`}</button>
-            </div>
-          </div>
-        </div>
-        <div className={styles.sketch}>
-          <Sketch
-            ref={e => (this.sketch = e)}
-            tool={tool}
-            color={color}
-            drawInput={drawInput}
-            updateToolInfo={this.updateToolInfo}
-          />
-        </div>
-      </div>
-    );
-  }
+```
+state = {
+    drawInput: []
 }
 
-export default App;
+updateToolInfo = data => {
+    this.setState({ drawInput: data });
+};
+  
 ```
+
+Pass the state to Sketch. 
+```
+<div className={styles.sketch}>
+  <Sketch
+    ref={e => (this.sketch = e)}
+    tool={TOOL.PENCIL}
+    color="#234494"
+    drawInput={drawInput}
+    updateToolInfo={this.updateToolInfo}
+  />
+</div>
+
+```
+
+This would embed a HTML5 Canvas on which you will be able to draw. 
+Check out our [example code](./example/src/App.js)
+

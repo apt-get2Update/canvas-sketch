@@ -65,7 +65,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "Draw on a canvas sketch using [Sketch](https://github.com/apt-get2Update/canvas-sketch). It gives an easy to integrate API, that helps draw on an HTML canvas. You could also choose between drawing, writing a text or using an eraser.",
   "directories": {
     "example": "example"
   },
