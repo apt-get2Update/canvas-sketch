@@ -6,7 +6,7 @@ The project provides a react library, that helps build a free hand drawing board
 
 ![Sample Screen shot](./docs/demo-screenshot.png) 
 
-Check out are **[Demo App](https://fir-view-e11aa.firebaseapp.com/)**
+Check out the **[Demo App](https://fir-view-e11aa.firebaseapp.com/)**
 
 
 ## Installation
@@ -28,28 +28,37 @@ You can Import the library as shown below
 import Sketch, { TOOL } from "@vhitech/canvas-sketch";
 ``` 
 
-Maintain state variable to track the coordinates of the drawing
+Maintain a state variable that helps track the coordinates of your drawing.
+Define a method to set the state as well. 
 
 ```
 state = {
-    drawInput: []
+    drawingInput: []
 }
 
-updateToolInfo = data => {
-    this.setState({ drawInput: data });
+setDrawingInput = data => {
+    this.setState({ drawingInput: data });
 };
   
 ```
 
-Pass the state to Sketch. 
+If you are using React Hooks the code may look like this
+
+```
+const [drawingInput, setDrawingInput] = useState([]);  
+
+```
+
+
+Create a Sketch as shown below. 
 ```
 <div className={styles.sketch}>
   <Sketch
     ref={e => (this.sketch = e)}
     tool={TOOL.PENCIL}
     color="#234494"
-    drawInput={drawInput}
-    updateToolInfo={this.updateToolInfo}
+    drawInput={drawingInput}
+    updateToolInfo={this.setDrawingInput}
   />
 </div>
 
